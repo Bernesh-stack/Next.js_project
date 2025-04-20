@@ -1,15 +1,32 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const geist = Geist({
   subsets: ["latin"],
+  variable: "--font-geist-sans",
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
+});
+
+const workSans = localFont({
+  src: [
+    { path: "./fonts/WorkSans-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./fonts/WorkSans-Medium.ttf", weight: "500", style: "normal" },
+    { path: "./fonts/WorkSans-SemiBold.ttf", weight: "600", style: "normal" },
+    { path: "./fonts/WorkSans-Bold.ttf", weight: "700", style: "normal" },
+    { path: "./fonts/WorkSans-ExtraBold.ttf", weight: "800", style: "normal" },
+    { path: "./fonts/WorkSans-Black.ttf", weight: "900", style: "normal" },
+    { path: "./fonts/WorkSans-Extralight.ttf", weight: "100", style: "normal" },
+    { path: "./fonts/WorkSans-Thin.ttf", weight: "200", style: "normal" },
+  ],
+  variable: "--font-work-sans",
 });
 
 export const metadata: Metadata = {
@@ -19,14 +36,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geist.variable} ${geistMono.variable} ${workSans.variable}`}>
         {children}
       </body>
     </html>
