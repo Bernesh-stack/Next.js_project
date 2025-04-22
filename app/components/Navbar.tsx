@@ -4,10 +4,7 @@ import { env } from 'process';
 
 const Navbar = async () => {
   const session = await auth(); 
-  // <- make sure this is only used in a server component
-  console.log("AUTH_SECRET:", process.env.AUTH_SECRET);
-console.log("AUTH_GITHUB_ID:", process.env.AUTH_GITHUB_ID);
-console.log("AUTH_GITHUB_SECRET:", process.env.AUTH_GITHUB_SECRET);
+
 
 
   return (
